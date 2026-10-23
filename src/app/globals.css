@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+/* Dark mode is switched by adding the "dark" class to <html> (see ThemeToggle) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------- Colours: warm off-white, deep green, amber accent ---------- */
+:root {
+  --background: #fbf7f0;
+  --surface: #ffffff;
+  --surface-soft: #f4efe4;
+  --ink: #1f2a24;
+  --muted: #66756b;
+  --line: #e7dfce;
+  --primary: #14532d;
+  --primary-soft: #e2f0e6;
+  --on-primary: #ffffff;
+  --accent: #d98a0b;
+  --accent-soft: #fbefd5;
+  --rise: #c4342b; /* price going up is bad news for shoppers */
+  --fall: #1a8148; /* price going down is good news */
+  --flat: #6b7280;
+  --chart-grid: #e9e2d2;
+  --chart-3: #3b6ea5; /* extra series colours for charts */
+  --chart-4: #8a4f7d;
+}
+
+.dark {
+  --background: #0f1511;
+  --surface: #17201a;
+  --surface-soft: #1d2922;
+  --ink: #ece8de;
+  --muted: #9aab9f;
+  --line: #2a3a30;
+  --primary: #5cc58a;
+  --primary-soft: #1d3a2b;
+  --on-primary: #08150e;
+  --accent: #f0b13d;
+  --accent-soft: #3a2e12;
+  --rise: #ff7a6e;
+  --fall: #5fd392;
+  --flat: #a3acb5;
+  --chart-grid: #26352c;
+  --chart-3: #7fb0e6;
+  --chart-4: #c58bb8;
+}
+
+/* Makes the colours above usable as Tailwind classes (bg-surface, text-muted, border-line ...) */
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-soft: var(--surface-soft);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-primary: var(--primary);
+  --color-primary-soft: var(--primary-soft);
+  --color-on-primary: var(--on-primary);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-rise: var(--rise);
+  --color-fall: var(--fall);
+  --color-flat: var(--flat);
+
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-card: 0 1px 2px rgb(31 42 36 / 0.05), 0 6px 20px -8px rgb(31 42 36 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(31 42 36 / 0.06), 0 16px 32px -12px rgb(31 42 36 / 0.22);
+
+  /* Simple animations: things fade and float in gently */
+  --animate-fade-up: fade-up 0.5s ease-out both;
+  --animate-fade-in: fade-in 0.35s ease-out both;
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--ink);
+}
+
+/* Keyboard focus is always clearly visible */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* People who prefer less motion get no animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
