@@ -42,25 +42,25 @@ api.interceptors.response.use(
   },
 );
 
-/** GET and return `data` from the envelope. */
+/** GET and return data */
 export async function getData<T>(url: string, params?: object): Promise<T> {
   const response = await api.get<ApiSuccess<T>>(url, { params });
   return response.data.data;
 }
 
-/** GET a paginated list and return the items together with the paging info. */
+/** GET a paginated list and return the items together with the paging info */
 export async function getPaged<T>(url: string, params?: object): Promise<Paged<T>> {
   const response = await api.get<ApiSuccess<T[]>>(url, { params });
   return { items: response.data.data, meta: response.data.meta! };
 }
 
-/** POST a body and return `data` from the envelope. */
+/** POST a body and return data */
 export async function postData<T>(url: string, body: object, timeout?: number): Promise<T> {
   const response = await api.post<ApiSuccess<T>>(url, body, { timeout });
   return response.data.data;
 }
 
-/** PATCH a body and return `data` from the envelope. */
+/** PATCH a body and return data */
 export async function patchData<T>(url: string, body: object): Promise<T> {
   const response = await api.patch<ApiSuccess<T>>(url, body);
   return response.data.data;
