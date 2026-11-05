@@ -18,7 +18,7 @@ export default function Hero() {
           data && (
             <div className="flex flex-wrap items-center gap-2 text-sm font-semibold">
               {data.forecastPeriod && (
-                <span className="rounded-full bg-white/15 px-3 py-1">Forecast for {formatMonth(data.forecastPeriod)}</span>
+                <span className="rounded-full bg-white/15 px-3 py-1">Forecast</span>
               )}
             </div>
           )
