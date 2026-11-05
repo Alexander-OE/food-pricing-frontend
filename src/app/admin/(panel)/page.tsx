@@ -1,6 +1,5 @@
 "use client";
-// Admin overview: headline numbers grouped into audience, engagement and forecast quality,
-// each explained in plain language, plus the most viewed commodities.
+
 import Link from "next/link";
 import ChangeBadge from "@/components/admin/ChangeBadge";
 import AsyncView from "@/components/ui/AsyncView";
@@ -12,7 +11,7 @@ import { formatNumber } from "@/lib/format";
 import { useCommodityRanking, useOverview } from "@/lib/hooks/useAdmin";
 import type { VisitorStat } from "@/types/admin";
 
-/** A labelled group of cards, with a one-line explanation of what the group shows. */
+
 function Section({ title, description, children }: { title: string; description: string; children: React.ReactNode }) {
   return (
     <section>
@@ -23,7 +22,7 @@ function Section({ title, description, children }: { title: string; description:
   );
 }
 
-/** Visitors for one period: the number, a plain sentence, and the change versus the period before. */
+
 function visitorCard(label: string, help: string, stat: VisitorStat) {
   return (
     <StatCard
