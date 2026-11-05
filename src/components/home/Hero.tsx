@@ -1,5 +1,5 @@
 "use client";
-// The big welcome banner on the home page, with the forecast month and a simulated-data notice.
+// The big welcome banner on the home page, with the forecast month and where the data comes from.
 import Link from "next/link";
 import Skeleton from "@/components/ui/Skeleton";
 import { formatMonth } from "@/lib/format";
@@ -20,7 +20,6 @@ export default function Hero() {
               {data.forecastPeriod && (
                 <span className="rounded-full bg-white/15 px-3 py-1">Forecast for {formatMonth(data.forecastPeriod)}</span>
               )}
-              {data.dataSource === "mock" && <span className="rounded-full bg-accent px-3 py-1 text-black">Simulated data</span>}
             </div>
           )
         )}
@@ -39,7 +38,9 @@ export default function Hero() {
           </Link>
         </div>
         {data?.latestDataPeriod && (
-          <p className="mt-6 text-sm opacity-75">Based on price data up to {formatMonth(data.latestDataPeriod)}.</p>
+          <p className="mt-6 text-sm opacity-75">
+            Based on price data up to {formatMonth(data.latestDataPeriod)}. {data.dataSourceLabel}.
+          </p>
         )}
       </div>
     </section>

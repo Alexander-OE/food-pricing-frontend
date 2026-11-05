@@ -46,7 +46,7 @@ export default function ForecastGuide({ forecastPeriod }: { forecastPeriod: stri
       <GuideCard
         icon="↕"
         title="Direction"
-        text={`Red up means the price should rise, green down means it should fall. Grey means steady, a change of ${STEADY_LIMIT_PERCENT}% or less.`}
+        text={`Red up means the price should rise, green down means it should fall. Grey means steady, a change of ${STEADY_LIMIT_PERCENT}% or less. It compares next month's forecast with today's price.`}
       >
         <div className="flex flex-wrap gap-1.5">
           <DirectionBadge direction="UP" />
@@ -55,7 +55,7 @@ export default function ForecastGuide({ forecastPeriod }: { forecastPeriod: stri
         </div>
       </GuideCard>
 
-      <GuideCard icon="₦" title="Predicted price" text="What we expect the price to be next month.">
+      <GuideCard icon="₦" title="Predicted price" text="What we expect the price to be next month. It's our best single guess, based on recent prices and the drivers above.">
         {forecastPeriod && (
           <span className="inline-block rounded-full bg-accent-soft px-3 py-1 text-xs font-bold text-accent">
             Forecast for {formatMonth(forecastPeriod)}
@@ -63,14 +63,14 @@ export default function ForecastGuide({ forecastPeriod }: { forecastPeriod: stri
         )}
       </GuideCard>
 
-      <GuideCard icon="↔" title="Price range" text="The low-to-high range the price will most likely fall in. A wider range means less certainty.">
+      <GuideCard icon="↔" title="Price range" text="The low-to-high range the price will most likely fall in. We expect the real price to land inside it about 8 times out of 10. A wider range means less certainty.">
         <div className="space-y-3">
           <RangeSample label="Narrow: more certain" />
           <RangeSample label="Wide: less certain" wide />
         </div>
       </GuideCard>
 
-      <GuideCard icon="✓" title="Track record" text="How close last month's prediction was to the actual price.">
+      <GuideCard icon="✓" title="Track record" text="How close last month's prediction was to the actual price. A tick means we got the direction right; a cross means we missed.">
         <div className="flex flex-wrap gap-1.5 text-xs font-bold">
           <span className="rounded-full bg-fall/10 px-2.5 py-1 text-fall">✓ Correct</span>
           <span className="rounded-full bg-rise/10 px-2.5 py-1 text-rise">✗ Missed</span>

@@ -24,6 +24,7 @@ const HISTORY_OPTIONS = [
   { months: 12, label: "1 year" },
   { months: 24, label: "2 years" },
   { months: 60, label: "5 years" },
+  { months: 120, label: "All" }, // the backend's maximum, which covers everything back to 2018
 ];
 const ACCURACY_MONTHS = 12;
 

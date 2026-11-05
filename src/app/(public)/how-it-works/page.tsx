@@ -1,20 +1,29 @@
 "use client";
-// How it works: a short explanation, how to read a forecast, plus live data status and service health.
-import DataStatusCard from "@/components/info/DataStatusCard";
+// How it works: how a forecast is made, how to read one, and how to use it when shopping.
 import ForecastGuide from "@/components/info/ForecastGuide";
-// import HealthCard from "@/components/info/HealthCard";
-import AsyncView from "@/components/ui/AsyncView";
+import ShopTips from "@/components/info/ShopTips";
 import Card from "@/components/ui/Card";
 import PageHeader from "@/components/ui/PageHeader";
-import Skeleton from "@/components/ui/Skeleton";
-import { useDataStatus, useHealth } from "@/lib/hooks/useMarket";
+import { useDataStatus } from "@/lib/hooks/useMarket";
 
-// The four steps behind every forecast, kept to one short sentence each
+// The four steps behind every forecast, in two short sentences each (matches what the backend model does)
 const STEPS = [
-  { title: "Collect prices", text: "We record what each food costs every month." },
-  { title: "Watch the drivers", text: "Dollar rate, fuel, inflation, seasons and supply move prices." },
-  { title: "Forecast", text: "We combine the recent trend with those drivers to estimate next month." },
-  { title: "Check our work", text: "When the real price arrives, we compare it with our forecast." },
+  {
+    title: "Collect prices",
+    text: "Every month we record the average price of each food in Lagos. We use figures from the National Bureau of Statistics (NBS) and recent market surveys.",
+  },
+  {
+    title: "Watch the drivers",
+    text: "Prices don't move on their own. The dollar rate, diesel and transport costs, the season and how much food is available all push prices up or down.",
+  },
+  {
+    title: "Forecast",
+    text: "We look at how each price has moved over the past year, then adjust for those drivers. That gives us our best estimate of next month's price.",
+  },
+  {
+    title: "Check our work",
+    text: "When the real price comes in, we compare it with what we predicted. This keeps us honest and shows how reliable each forecast is.",
+  },
 ];
 
 /** Section title with a one-line subtitle. */
@@ -28,8 +37,7 @@ function SectionTitle({ title, subtitle }: { title: string; subtitle?: string })
 }
 
 export default function HowItWorksPage() {
-  const status = useDataStatus();
-  // const health = useHealth();
+  const status = useDataStatus(); // only for the forecast month shown in the guide
 
   return (
     <div className="space-y-10">
@@ -53,13 +61,9 @@ export default function HowItWorksPage() {
         <ForecastGuide forecastPeriod={status.data?.forecastPeriod ?? null} />
       </section>
 
-      <section className="grid gap-5 lg:grid-cols-[2fr_1fr]">
-        <AsyncView state={status} skeleton={<Skeleton className="h-64" />}>
-          {(data) => <DataStatusCard status={data} />}
-        </AsyncView>
-        {/* <AsyncView state={health} skeleton={<Skeleton className="h-40" />}>
-          {(data) => <HealthCard health={data} />}
-        </AsyncView> */}
+      <section>
+        <SectionTitle title="Shop smarter with FoodCast" subtitle="A forecast is only useful if it helps you decide. Here's how to use one." />
+        <ShopTips />
       </section>
     </div>
   );
