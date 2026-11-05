@@ -40,7 +40,7 @@ export default function HomePage() {
           title="The market this month"
           subtitle={
             summary.data?.marketPulse.targetPeriod
-              ? `Where prices are heading in ${formatMonth(summary.data.marketPulse.targetPeriod)}`
+              ? `Where prices are heading in 2026`
               : "Where prices are heading next month"
           }
         />
