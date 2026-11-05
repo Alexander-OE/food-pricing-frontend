@@ -7,7 +7,6 @@ import type { Admin } from "@/types/admin";
 
 const LINKS = [
   { href: "/admin", label: "Overview", icon: "📊" },
-  { href: "/admin/analytics", label: "Usage analytics", icon: "📈" },
   { href: "/admin/data", label: "Data health", icon: "🗄️" },
   { href: "/admin/accuracy", label: "Forecast accuracy", icon: "🎯" },
   { href: "/admin/feedback", label: "Feedback", icon: "💬" },
