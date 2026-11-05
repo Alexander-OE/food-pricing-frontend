@@ -1,5 +1,4 @@
 "use client";
-// The browse page: search box, category chips, filters, a grid of commodities and paging.
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import AsyncView from "@/components/ui/AsyncView";
@@ -14,12 +13,14 @@ import TileGridSkeleton from "./TileGridSkeleton";
 
 const PAGE_SIZE = 12;
 
+// The browse page: search box, category chips, filters, a grid of commodities and paging.
+
 export default function BrowseView() {
   // A category link from the home page arrives as ?category=GRAINS
   const initialCategory = (useSearchParams().get("category") ?? "") as CommodityCategory | "";
 
   const [searchText, setSearchText] = useState("");
-  const [search, setSearch] = useState(""); // the search text once typing has paused
+  const [search, setSearch] = useState(""); 
   const [category, setCategory] = useState<CommodityCategory | "">(initialCategory);
   const [direction, setDirection] = useState<Direction | "">("");
   const [sort, setSort] = useState<CommoditySort>("name");
