@@ -37,7 +37,7 @@ export default function Hero() {
         </div>
         {data?.latestDataPeriod && (
           <p className="mt-6 text-sm opacity-75">
-            Based on price data up to {formatMonth(data.latestDataPeriod)}. {data.dataSourceLabel}.
+            {/* Based on price data up to {formatMonth(data.latestDataPeriod)}. {data.dataSourceLabel}. */}
           </p>
         )}
       </div>
