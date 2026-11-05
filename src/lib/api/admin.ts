@@ -7,20 +7,13 @@ import type {
   AdminFeedback,
   AdminFeedbackParams,
   CommodityRanking,
-  DataStepStatus,
   LoginResponse,
   Overview,
-  RefreshLog,
-  RefreshLogParams,
-  RefreshType,
   Usage,
   UsageRange,
 } from "@/types/admin";
 import type { FeedbackReceipt, FeedbackStatus } from "@/types/feedback";
 import { getData, getPaged, patchData, postData } from "./client";
-
-// A full refresh runs the whole data pipeline, so it can take a while
-const REFRESH_TIMEOUT_MS = 180000;
 
 /** POST /admin/auth/login: returns the token and the admin's details. */
 export function login(email: string, password: string): Promise<LoginResponse> {
@@ -45,21 +38,6 @@ export function getUsage(range: UsageRange): Promise<Usage> {
 /** GET /admin/analytics/commodities: commodities ranked by views. */
 export function getCommodityRanking(range: UsageRange): Promise<CommodityRanking[]> {
   return getData<CommodityRanking[]>("/admin/analytics/commodities", { range });
-}
-
-/** GET /admin/data/status: how fresh each data step is. */
-export function getDataSteps(): Promise<DataStepStatus[]> {
-  return getData<DataStepStatus[]>("/admin/data/status");
-}
-
-/** GET /admin/data/refresh-logs: history of data refresh runs. */
-export function getRefreshLogs(params: RefreshLogParams): Promise<Paged<RefreshLog>> {
-  return getPaged<RefreshLog>("/admin/data/refresh-logs", params);
-}
-
-/** POST /admin/data/refresh: run one data step (or all of them) right now. */
-export function runRefresh(type: RefreshType | "ALL"): Promise<RefreshLog[]> {
-  return postData<RefreshLog[]>("/admin/data/refresh", { type }, REFRESH_TIMEOUT_MS);
 }
 
 /** GET /admin/accuracy: how close the forecasts were, over time and per commodity. */

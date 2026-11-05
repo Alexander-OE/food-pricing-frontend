@@ -4,14 +4,12 @@ import {
   getAccuracyReport,
   getAdminCommodities,
   getCommodityRanking,
-  getDataSteps,
   getFeedbackList,
   getMe,
   getOverview,
-  getRefreshLogs,
   getUsage,
 } from "@/lib/api/admin";
-import type { AdminFeedbackParams, RefreshLogParams, UsageRange } from "@/types/admin";
+import type { AdminFeedbackParams, UsageRange } from "@/types/admin";
 import { useFetch } from "./useFetch";
 
 /** The logged-in admin. */
@@ -32,16 +30,6 @@ export function useUsage(range: UsageRange) {
 /** Commodities ranked by views and chats. */
 export function useCommodityRanking(range: UsageRange) {
   return useFetch(() => getCommodityRanking(range), [range]);
-}
-
-/** Freshness of each data step. */
-export function useDataSteps() {
-  return useFetch(getDataSteps, []);
-}
-
-/** History of data refresh runs. */
-export function useRefreshLogs(params: RefreshLogParams) {
-  return useFetch(() => getRefreshLogs(params), [params]);
 }
 
 /** Forecast accuracy report. */

@@ -63,36 +63,6 @@ export interface CommodityRanking {
   chats: number;
 }
 
-// ----- Data health -----
-export interface DataStepStatus {
-  type: RefreshType;
-  lastSuccessAt: string | null;
-  lastAttemptAt: string | null;
-  status: RefreshStatus | null;
-  latestDataPeriod: string | null;
-  isFresh: boolean;
-  lastError: string | null;
-}
-
-export interface RefreshLog {
-  id: number;
-  type: RefreshType;
-  status: RefreshStatus;
-  trigger: string;
-  startedAt: string;
-  finishedAt: string | null;
-  recordsProcessed: number;
-  dataPeriod: string | null;
-  errorMessage: string | null;
-}
-
-export interface RefreshLogParams {
-  type?: RefreshType;
-  status?: RefreshStatus;
-  page?: number;
-  limit?: number;
-}
-
 // ----- Forecast accuracy -----
 export interface AccuracySummary {
   mape: number;
