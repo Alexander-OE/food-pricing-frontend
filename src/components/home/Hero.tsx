@@ -1,5 +1,4 @@
 "use client";
-// The big welcome banner on the home page, with the forecast month and where the data comes from.
 import Link from "next/link";
 import Skeleton from "@/components/ui/Skeleton";
 import { formatMonth } from "@/lib/format";
@@ -9,7 +8,6 @@ export default function Hero() {
   const { data, loading } = useDataStatus();
   return (
     <section className="relative overflow-hidden rounded-3xl bg-primary px-6 py-12 text-on-primary sm:px-12 sm:py-16 animate-fade-up">
-      {/* Soft amber glow for a bit of warmth */}
       <div className="pointer-events-none absolute -right-16 -top-16 h-72 w-72 rounded-full bg-accent/30 blur-3xl" aria-hidden="true" />
       <div className="relative max-w-2xl">
         {loading && !data ? (
