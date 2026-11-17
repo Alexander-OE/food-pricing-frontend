@@ -79,7 +79,7 @@ export default function CommodityPage() {
               <Card>
                 <h2 className="font-display text-xl font-bold">Why this forecast?</h2>
                 <p className="mt-2 text-muted">{detail.explanation || "No explanation is available yet."}</p>
-                {detail.modelVersion && <p className="mt-4 text-xs text-muted">Model: {detail.modelVersion}</p>}
+                {/* {detail.modelVersion && <p className="mt-4 text-xs text-muted">Model: {detail.modelVersion}</p>} */}
               </Card>
               <Card>
                 <h2 className="mb-4 font-display text-xl font-bold">What is pushing the price</h2>
